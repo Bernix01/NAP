@@ -1,0 +1,87 @@
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        tools:context=".GradesActivity"
+        android:background="@drawable/bg">
+    <!--
+    This title strip will display the currently visible page title, as well as the page
+    titles for adjacent pages.
+    --> <ImageView
+        android:layout_width="50dp"
+        android:layout_height="60dp"
+        android:id="@+id/imageView"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/profile"
+        android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text=""
+            android:id="@+id/unames"
+            android:layout_alignTop="@+id/imageView"
+            android:layout_toRightOf="@+id/imageView"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="15dp"
+            android:lines="2"
+            android:maxWidth="150dp"
+            android:maxLines="2"
+            android:minLines="2"
+            android:textSize="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=""
+            android:id="@+id/cid"
+            android:layout_toRightOf="@+id/unames"
+            android:layout_alignTop="@+id/imageView"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="16dp" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/qpselector"
+            android:layout_below="@+id/imageView"
+            android:spinnerMode="dropdown"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp" />
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/qpselector"
+            android:id="@+id/frameLayout"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentRight="false"
+            android:layout_alignParentBottom="false">
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".Hola"
+            android:background="#75FFFFFF">
+
+
+
+    <android.support.v4.view.PagerTitleStrip
+        android:id="@+id/pager_title_strip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="#33b5e5"
+        android:paddingBottom="4dp"
+        android:paddingTop="4dp"
+        android:textColor="#fff" />
+
+</android.support.v4.view.ViewPager>
+        </FrameLayout>
+ </RelativeLayout>

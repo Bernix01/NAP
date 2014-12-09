@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/NAP.iml" filepath="$PROJECT_DIR$/NAP.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/nap.iml" filepath="$PROJECT_DIR$/nap.iml" />
     </modules>
   </component>
 </project>
