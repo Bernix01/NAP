@@ -3,7 +3,7 @@
  * URL: www.androidhive.info
  * twitter: http://twitter.com/ravitamada
  * */
-package com.example.androidhive;
+package nimbus.ec.nap;
 
 import java.util.HashMap;
 
@@ -19,8 +19,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.example.androidhive.library.DatabaseHandler;
-import com.example.androidhive.library.UserFunctions;
+import nimbus.ec.nap.library.DatabaseHandler;
+import nimbus.ec.nap.library.UserFunctions;
 
 public class LoginActivity extends Activity {
 	Button btnLogin;
@@ -41,14 +41,14 @@ public class LoginActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.login);
+		setContentView(R.layout.activity_login);
 
 		// Importing all assets like buttons, text fields
-		inputEmail = (EditText) findViewById(R.id.loginEmail);
-		inputPassword = (EditText) findViewById(R.id.loginPassword);
-		btnLogin = (Button) findViewById(R.id.btnLogin);
-		btnLinkToRegister = (Button) findViewById(R.id.btnLinkToRegisterScreen);
-		loginErrorMsg = (TextView) findViewById(R.id.login_error);
+		inputEmail = (EditText) findViewById(R.id.etxt_usr);
+		inputPassword = (EditText) findViewById(R.id.etxt_pw);
+		btnLogin = (Button) findViewById(R.id.do_login);
+		btnLinkToRegister = (Button) findViewById(R.id.go_register);
+		loginErrorMsg = (TextView) findViewById(R.id.error_etxt);
 
 		// Login button Click Event
 		btnLogin.setOnClickListener(new View.OnClickListener() {

@@ -3,7 +3,7 @@
  * URL: www.androidhive.info
  * twitter: http://twitter.com/ravitamada
  * */
-package com.example.androidhive.library;
+package nimbus.ec.nap.library;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +18,8 @@ public class UserFunctions {
 	
 	private JSONParser jsonParser;
 	
-	private static String loginURL = "http://10.0.2.2/ah_login_api/";
-	private static String registerURL = "http://10.0.2.2/ah_login_api/";
+	private static String loginURL = "http://api.nnimbus.com/nap/";
+	private static String registerURL = "http://api.nnimbus.com/nap/";
 	
 	private static String login_tag = "login";
 	private static String register_tag = "register";

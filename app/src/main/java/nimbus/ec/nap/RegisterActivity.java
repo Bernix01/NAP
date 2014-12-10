@@ -3,13 +3,13 @@
  * URL: www.androidhive.info
  * twitter: http://twitter.com/ravitamada
  * */
-package com.example.androidhive;
+package nimbus.ec.nap;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.example.androidhive.library.DatabaseHandler;
-import com.example.androidhive.library.UserFunctions;
+import nimbus.ec.nap.library.DatabaseHandler;
+import nimbus.ec.nap.library.UserFunctions;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -40,8 +40,8 @@ public class RegisterActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.register);
-
+		setContentView(R.layout.activity_register);
+/*
 		// Importing all assets like buttons, text fields
 		inputFullName = (EditText) findViewById(R.id.registerName);
 		inputEmail = (EditText) findViewById(R.id.registerEmail);
@@ -101,6 +101,6 @@ public class RegisterActivity extends Activity {
 				// Close Registration View
 				finish();
 			}
-		});
+		});*/
 	}
 }

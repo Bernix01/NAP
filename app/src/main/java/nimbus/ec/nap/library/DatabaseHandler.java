@@ -3,7 +3,7 @@
  * URL: www.androidhive.info
  * twitter: http://twitter.com/ravitamada
  * */
-package com.example.androidhive.library;
+package nimbus.ec.nap.library;
 
 import java.util.HashMap;
 
