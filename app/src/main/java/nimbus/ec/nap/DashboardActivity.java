@@ -13,7 +13,7 @@ import android.widget.Button;
 
 import nimbus.ec.nap.library.UserFunctions;
 
-public class DashboardActivity extends Activity {
+public class DashboardActivity extends Drawer_man {
 	UserFunctions userFunctions;
 	Button btnLogout;
     @Override
@@ -41,7 +41,8 @@ public class DashboardActivity extends Activity {
     	        	finish();
     			}
     		});
-        	
+        	prepareNews();
+
         }else{
         	// user is not logged in show login screen
         	Intent login = new Intent(getApplicationContext(), LoginActivity.class);
@@ -54,5 +55,8 @@ public class DashboardActivity extends Activity {
         
         
         
+    }
+    private void prepareNews(){
+
     }
 }
