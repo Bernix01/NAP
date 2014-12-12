@@ -13,15 +13,17 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
 import android.content.Context;
+import android.util.Log;
 
 public class UserFunctions {
 	
 	private JSONParser jsonParser;
 	
-	private static String loginURL = "http://api.nnimbus.com/nap/";
-	private static String registerURL = "http://api.nnimbus.com/nap/";
+	private static String loginURL = "http://api.nimbus.ec/nap/";
+	private static String registerURL = "http://api.nimbus.ec/nap/";
 	
 	private static String login_tag = "login";
+    private static String news_tag = "news";
 	private static String register_tag = "register";
 	
 	// constructor
@@ -42,11 +44,23 @@ public class UserFunctions {
 		params.add(new BasicNameValuePair("password", password));
 		JSONObject json = jsonParser.getJSONFromUrl(loginURL, params);
 		// return json
-		// Log.e("JSON", json.toString());
+		Log.e("JSON", json.toString());
 		return json;
 	}
-	
-	/**
+
+    public JSONObject getnews(){
+        // Building Parameters
+        Log.d("getting", news_tag);
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        JSONObject json = jsonParser.getJSONFromUrl("http://api.nimbus.ec/nap/news.php", params);
+        Log.d("GOT", json.toString());
+
+        // return json
+        // Log.e("JSON", json.toString());
+        return json;
+    }
+
+    /**
 	 * function make Login Request
 	 * @param name
 	 * @param email
@@ -59,7 +73,7 @@ public class UserFunctions {
 		params.add(new BasicNameValuePair("name", name));
 		params.add(new BasicNameValuePair("email", email));
 		params.add(new BasicNameValuePair("password", password));
-		
+
 		// getting JSON Object
 		JSONObject json = jsonParser.getJSONFromUrl(registerURL, params);
 		// return json

@@ -11,7 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+import nimbus.ec.nap.library.Rounder;
+import com.squareup.picasso.Picasso;
 
 public class Listor extends BaseAdapter{
 
@@ -52,6 +55,7 @@ public class Listor extends BaseAdapter{
         TextView txtViewDate;
         TextView txtViewTitle;
         TextView txtViewDescription;
+        ImageView imvHeader;
     }
 
     @Override
@@ -67,13 +71,14 @@ public class Listor extends BaseAdapter{
             holder.txtViewDate = (TextView) convertView.findViewById(R.id.ndate);
             holder.txtViewTitle = (TextView) convertView.findViewById(R.id.ntitle);
             holder.txtViewDescription = (TextView) convertView.findViewById(R.id.ncontent);
-
+            holder.imvHeader = (ImageView) convertView.findViewById(R.id.noti_header);
             convertView.setTag(holder);
         }
         else
             holder=(ViewHolder)convertView.getTag();
 
         MrItem bean = (MrItem) itemList.get(position);
+        Picasso.with(context).load("http://lorempixel.com/400/200/nature").transform(new Rounder(4, 0)).fit().centerCrop().into(holder.imvHeader);
 
         holder.txtViewDate.setText(bean.getDate());
         holder.txtViewTitle.setText(bean.getTitle());

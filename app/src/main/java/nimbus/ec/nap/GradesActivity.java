@@ -6,7 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class GradesActivity extends ActionBarActivity {
+public class GradesActivity extends Drawer_man {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

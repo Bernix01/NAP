@@ -5,6 +5,13 @@
     android:layout_height="match_parent">
     <!-- The main content view -->
     <!-- The navigation drawer -->
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progresnews"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,7 +24,14 @@
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/listView"
+        android:id="@+id/nlistView"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:scrollbars="none"
+        android:layout_centerHorizontal="true"
+        android:dividerHeight="3dp"
+        android:divider="#00fc0400"
+        android:padding="3dp"
+        android:fastScrollEnabled="false"
+        android:visibility="gone" />
+
 </RelativeLayout>
