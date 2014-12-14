@@ -3,7 +3,7 @@
 
     <string name="app_name">NAP</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_logout">Cerrar sesión</string>
 
     <string-array name="drawer_menu_items">
         <item>Noticias</item>
@@ -19,5 +19,8 @@
     <string name="title_activity_profile">Perfil</string>
     <string name="title_activity_stats">Estadísticas</string>
     <string name="title_activity_drawer_man">Drawer</string>
+    <string name="title_activity_main">Inicio</string>
+    <string name="hint_usr_etxt">usuario/e-mail</string>
+    <string name="hint_pw_etxt">contraseña</string>
 
 </resources>

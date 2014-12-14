@@ -1,4 +1,4 @@
-package nimbus.ec.nap.library;
+package nimbus.ec.napdemo.library;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.graphics.BitmapShader;

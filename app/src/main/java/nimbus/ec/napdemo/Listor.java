@@ -1,4 +1,4 @@
-package nimbus.ec.nap;
+package nimbus.ec.napdemo;
 
 /**
  * Created by gbern_000 on 10/12/2014.
@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import nimbus.ec.nap.library.Rounder;
+import nimbus.ec.napdemo.library.Rounder;
 import com.squareup.picasso.Picasso;
 
 public class Listor extends BaseAdapter{

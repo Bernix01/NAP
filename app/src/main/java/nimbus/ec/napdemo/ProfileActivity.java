@@ -1,17 +1,25 @@
-package nimbus.ec.nap;
+package nimbus.ec.napdemo;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.manuelpeinado.fadingactionbar.FadingActionBarHelper;
 
-public class ProfileActivity extends Drawer_man {
+
+public class ProfileActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        FadingActionBarHelper helper = new FadingActionBarHelper()
+                .actionBarBackground(Color.parseColor("#0066cc"))
+                .headerLayout(R.layout.layout_prof_header)
+                .contentLayout(R.layout.activity_profile);
+        setContentView(helper.createView(this));
+        helper.initActionBar(this);
     }
 
 

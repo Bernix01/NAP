@@ -3,19 +3,10 @@
  * URL: www.androidhive.info
  * twitter: http://twitter.com/ravitamada
  * */
-package nimbus.ec.nap;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import nimbus.ec.nap.library.DatabaseHandler;
-import nimbus.ec.nap.library.UserFunctions;
+package nimbus.ec.napdemo;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;

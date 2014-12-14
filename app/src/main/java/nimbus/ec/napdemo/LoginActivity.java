@@ -3,7 +3,7 @@
  * URL: www.androidhive.info
  * twitter: http://twitter.com/ravitamada
  * */
-package nimbus.ec.nap;
+package nimbus.ec.napdemo;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -12,7 +12,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -20,8 +19,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
-import nimbus.ec.nap.library.DatabaseHandler;
-import nimbus.ec.nap.library.UserFunctions;
+import nimbus.ec.napdemo.library.DatabaseHandler;
+import nimbus.ec.napdemo.library.UserFunctions;
 
 public class LoginActivity extends Activity {
 	Button btnLogin;

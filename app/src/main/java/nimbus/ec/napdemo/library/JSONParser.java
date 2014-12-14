@@ -3,7 +3,7 @@
  * URL: www.androidhive.info
  * twitter: http://twitter.com/ravitamada
  * */
-package nimbus.ec.nap.library;
+package nimbus.ec.napdemo.library;
 
 import java.io.BufferedReader;
 import java.io.IOException;

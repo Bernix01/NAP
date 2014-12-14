@@ -1,4 +1,4 @@
-package nimbus.ec.nap;
+package nimbus.ec.napdemo;
 
 /**
  * Created by gbern_000 on 10/12/2014.

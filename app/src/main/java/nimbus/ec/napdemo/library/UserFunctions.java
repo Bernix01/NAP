@@ -3,7 +3,7 @@
  * URL: www.androidhive.info
  * twitter: http://twitter.com/ravitamada
  * */
-package nimbus.ec.nap.library;
+package nimbus.ec.napdemo.library;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +53,20 @@ public class UserFunctions {
         Log.d("getting", news_tag);
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         JSONObject json = jsonParser.getJSONFromUrl("http://api.nimbus.ec/nap/news.php", params);
+        Log.d("GOT", json.toString());
+
+        // return json
+        // Log.e("JSON", json.toString());
+        return json;
+    }
+
+    public JSONObject getgrades(String uid){
+        // Building Parameters
+        Log.d("getting", news_tag);
+        List<NameValuePair> params = new ArrayList<NameValuePair>();
+        params.add(new BasicNameValuePair("p", uid));
+        params.add(new BasicNameValuePair("id", uid));
+        JSONObject json = jsonParser.getJSONFromUrl("http://api.nimbus.ec/nap/gr.php", params);
         Log.d("GOT", json.toString());
 
         // return json

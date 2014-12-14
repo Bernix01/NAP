@@ -1,4 +1,4 @@
-package nimbus.ec.nap;
+package nimbus.ec.napdemo;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

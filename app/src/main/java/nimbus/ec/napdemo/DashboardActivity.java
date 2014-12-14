@@ -3,20 +3,17 @@
  * URL: www.androidhive.info
  * twitter: http://twitter.com/ravitamada
  * */
-package nimbus.ec.nap;
+package nimbus.ec.napdemo;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
-import nimbus.ec.nap.library.JSONParser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,7 +21,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import nimbus.ec.nap.library.UserFunctions;
+import nimbus.ec.napdemo.library.UserFunctions;
 
 public class DashboardActivity extends Drawer_man {
 	UserFunctions userFunctions;
@@ -106,8 +103,6 @@ public class DashboardActivity extends Drawer_man {
         UserFunctions userFunction;
         JSONObject news;
         protected void onPreExecute(){
-            newer.setVisibility(View.INVISIBLE);
-            newsloader.setVisibility(View.VISIBLE);
         }
 
         protected Boolean doInBackground(String... params){
