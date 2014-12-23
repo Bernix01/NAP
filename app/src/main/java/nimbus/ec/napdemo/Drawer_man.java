@@ -4,6 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.media.audiofx.BassBoost;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -16,15 +20,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import it.neokree.materialnavigationdrawer.MaterialAccount;
+import it.neokree.materialnavigationdrawer.MaterialAccountListener;
+import it.neokree.materialnavigationdrawer.MaterialNavigationDrawer;
 import nimbus.ec.napdemo.library.DatabaseHandler;
+import nimbus.ec.napdemo.library.Rounder;
 import nimbus.ec.napdemo.library.UserFunctions;
 
 
@@ -35,6 +47,7 @@ public class Drawer_man extends ActionBarActivity {
     ActionBarDrawerToggle mDrawerToggle;
     protected RelativeLayout profile_container;
     DrawerLayout mDrawerLayout;
+    Bitmap p_image_drawer;
     DatabaseHandler dbhan;
     HashMap<String,String> user_details;
     @Override
@@ -54,9 +67,11 @@ public class Drawer_man extends ActionBarActivity {
         ListView menu = (ListView) findViewById(R.id.menu_lview);
         dbhan = new DatabaseHandler(getApplicationContext());
         user_details = dbhan.getUserDetails();
+        ImageView p_image = (ImageView) findViewById(R.id.drawer_p_image);
         TextView name = (TextView) findViewById(R.id.drawer_name);
         TextView curso = (TextView) findViewById(R.id.drawer_curso);
         TextView nick = (TextView) findViewById(R.id.drawer_user);
+        Picasso.with(getApplicationContext()).load("http://attx.nimbus.ec/nap_demo/"+user_details.get("p_image")).transform(new Rounder(4, 0)).fit().centerCrop().into(p_image);
         profile_container = (RelativeLayout) findViewById(R.id.drawer_prof_container);
         profile_container.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,9 +86,7 @@ public class Drawer_man extends ActionBarActivity {
                             mDrawerLayout.closeDrawers();
                         }
                         Intent go = new Intent(getApplicationContext(),ProfileActivity.class);
-                        go.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(go);
-                        finish();
                     }
                 } catch (PackageManager.NameNotFoundException e) {
                     e.printStackTrace();
@@ -81,7 +94,8 @@ public class Drawer_man extends ActionBarActivity {
             }
         });
         name.setText(user_details.get("name"));
-        nick.setText(user_details.get("email"));
+        nick.setText(user_details.get("nicename"));
+        curso.setText(user_details.get("curso")+ " \"" + user_details.get("paralelo").toUpperCase()+"\"");
         final StableArrayAdapter adapter = new StableArrayAdapter(this,
                 android.R.layout.simple_list_item_1, list);
         menu.setAdapter(adapter);
@@ -95,8 +109,7 @@ public class Drawer_man extends ActionBarActivity {
                 {
                     case 0:
                         try {
-                            Log.d("nombre",getPackageManager().getActivityInfo(getComponentName(),0).name);
-                            if(getPackageManager().getActivityInfo(getComponentName(),0).name.equals("nimbus.ec.nap.DashboardActivity")){
+                            if(getPackageManager().getActivityInfo(getComponentName(),0).name.equals("nimbus.ec.napdemo.DashboardActivity")){
                                 if(mDrawerLayout.isDrawerOpen(GravityCompat.START)){
                                     mDrawerLayout.closeDrawers();
                                 }
@@ -117,7 +130,7 @@ public class Drawer_man extends ActionBarActivity {
                     case 1:
 
                         try {
-                            if(getPackageManager().getActivityInfo(getComponentName(),0).name.equals("nimbus.ec.nap.GradesActivity")){
+                            if(getPackageManager().getActivityInfo(getComponentName(),0).name.equals("nimbus.ec.napdemo.GradesActivity")){
                                 if(mDrawerLayout.isDrawerOpen(GravityCompat.START)){
                                     mDrawerLayout.closeDrawers();
                                 }
@@ -141,12 +154,9 @@ public class Drawer_man extends ActionBarActivity {
             }
 
         });
-        mDrawerToggle = new ActionBarDrawerToggle(
+       mDrawerToggle = new ActionBarDrawerToggle(
                 this,  mDrawerLayout, mtoolbar,
                 R.string.drawer_open, R.string.drawer_close) {
-            /**
-             * Called when a drawer has settled in a completely closed state.
-             */
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
                 try {
@@ -156,9 +166,6 @@ public class Drawer_man extends ActionBarActivity {
                 }
             }
 
-            /**
-             * Called when a drawer has settled in a completely open state.
-             */
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
                 getSupportActionBar().setTitle("NAP");
@@ -169,8 +176,53 @@ public class Drawer_man extends ActionBarActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         mDrawerLayout.setFocusableInTouchMode(false);
-        mDrawerToggle.syncState();
+       mDrawerToggle.syncState();
     }
+  /*  @Override
+    public void init(Bundle savedInstanceState) {
+        someMethod("http://attx.nimbus.ec/nap_demo/"+user_details.get("p_image"));
+        // add first account
+        MaterialAccount account = new MaterialAccount(user_details.get("name"),user_details.get("mail"),p_image_drawer,this.getResources().getDrawable(R.drawable.background_tab));
+        this.addAccount(account);
+
+        // set listener
+        this.setAccountListener(this);
+
+        // add your sections
+
+        this.addDivisor();
+        // add custom colored section with only text
+
+        Intent i = new Intent(this,SettingsActivity.class);
+        this.addSection(this.newSection("Settings",this.getResources().getDrawable(R.drawable.grade_blue_bg),i));
+
+    }
+    private Target target = new Target() {
+        @Override
+        public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+            p_image_drawer = bitmap;
+        }
+
+        @Override
+        public void onBitmapFailed(Drawable errorDrawable) {
+
+        }
+
+        @Override
+        public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+        }
+    };
+
+    private void someMethod( String url) {
+        Picasso.with(this).load(url).into(target);
+    }
+
+    @Override
+    public void onDestroy() {  // could be in onPause or onStop
+        Picasso.with(this).cancelRequest(target);
+        super.onDestroy();
+    }*/
     @Override
     public void onBackPressed()
     {
@@ -179,6 +231,17 @@ public class Drawer_man extends ActionBarActivity {
         else
             super.onBackPressed();
     }
+
+    /*@Override
+    public void onAccountOpening(MaterialAccount materialAccount) {
+
+    }
+
+    @Override
+    public void onChangeAccount(MaterialAccount materialAccount) {
+
+    }*/
+
     private class StableArrayAdapter extends ArrayAdapter<String> {
 
         HashMap<String, Integer> mIdMap = new HashMap<String, Integer>();
@@ -215,15 +278,14 @@ public class Drawer_man extends ActionBarActivity {
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         // Sync the toggle state after onRestoreInstanceState has occurred.
-        mDrawerToggle.syncState();
+       mDrawerToggle.syncState();
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        mDrawerToggle.onConfigurationChanged(newConfig);
+       mDrawerToggle.onConfigurationChanged(newConfig);
     }
-//asdsdfaasdfsadfsadfsadfsadfsadfsadfsdf
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         //
@@ -250,7 +312,7 @@ public class Drawer_man extends ActionBarActivity {
                 default:
                     return super.onOptionsItemSelected(item);
             }
-            // Handle your other action bar items...
+            // Handle our other action bar items...
 
             return true;
             // Handle your other action bar items...

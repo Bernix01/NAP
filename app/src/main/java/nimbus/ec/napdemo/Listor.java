@@ -78,7 +78,7 @@ public class Listor extends BaseAdapter{
             holder=(ViewHolder)convertView.getTag();
 
         MrItem bean = (MrItem) itemList.get(position);
-        Picasso.with(context).load("http://lorempixel.com/400/200/nature").transform(new Rounder(4, 0)).fit().centerCrop().into(holder.imvHeader);
+        Picasso.with(context).load("http://lorempixel.com/400/200/nature/NIMBUS").transform(new Rounder(4, 0)).fit().centerCrop().into(holder.imvHeader);
 
         holder.txtViewDate.setText(bean.getDate());
         holder.txtViewTitle.setText(bean.getTitle());

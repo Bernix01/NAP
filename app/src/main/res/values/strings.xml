@@ -22,5 +22,8 @@
     <string name="title_activity_main">Inicio</string>
     <string name="hint_usr_etxt">usuario/e-mail</string>
     <string name="hint_pw_etxt">contraseña</string>
+    <string name="promedio_grades_tab">Promedio</string>
+    <string name="title_activity_settings">Configuración</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

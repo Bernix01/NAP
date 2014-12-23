@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primario">#06c</color>
+    <color name="primario">#ff008cff</color>
     <color name="primario_dark">#ff248ab0</color>
-    <color name="widgets_color">#09c</color>
+    <color name="widgets_color">#ff00cc88</color>
 </resources>

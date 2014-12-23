@@ -1,11 +1,5 @@
-# Built application files
-*.ap_
-
 # Files for the Dalvik VM
 *.dex
-
-# Java class files
-*.class
 
 # Generated files
 bin/

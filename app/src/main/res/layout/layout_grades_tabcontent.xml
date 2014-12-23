@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressgrades"
+
+        android:indeterminate="false"
+        android:layout_gravity="center" />
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/gradeslv"
+        android:scrollbars="none"
+        android:dividerHeight="6dp"
+        android:divider="#00fc0400"
+        android:fastScrollEnabled="false"
+        android:visibility="gone"
+        android:layout_marginBottom="42dp"
+        android:paddingLeft="3dp"
+        android:paddingTop="6dp"
+        android:paddingRight="3dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_gravity="bottom"
+        android:background="#96ffffff"
+        android:padding="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/promedio_grades_tab"
+            android:id="@+id/textView2"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text=""
+            android:id="@+id/promedio_term"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp" />
+    </RelativeLayout>
+</FrameLayout>

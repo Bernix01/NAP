@@ -33,10 +33,17 @@ public class LoginActivity extends Activity {
 	private static String KEY_SUCCESS = "success";
 	private static String KEY_ERROR = "error";
 	private static String KEY_ERROR_MSG = "error_msg";
-	private static String KEY_UID = "uid";
-	private static String KEY_NAME = "name";
-	private static String KEY_EMAIL = "email";
-	private static String KEY_CREATED_AT = "created_at";
+    private static final String KEY_ID = "id";
+    private static final String KEY_NAME = "name";
+    private static final String KEY_EMAIL = "email";
+    private static final String KEY_CURSO = "curso";
+    private static final String KEY_PARALELO = "paralelo";
+    private static final String KEY_BIO = "bio";
+    private static final String KEY_CPRES = "colegio_presedencia";
+    private static final String KEY_PIMAGE = "p_image";
+    private static final String KEY_REPRESENTANTES = "representantes";
+    private static final String KEY_UID = "uid";
+    private static final String KEY_CREATED_AT = "created_at";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -110,7 +117,7 @@ public class LoginActivity extends Activity {
 
                     // Clear all previous data in database
                     userFunction.logoutUser(getApplicationContext());
-                    db.addUser(json_user.getString(KEY_NAME), json_user.getString(KEY_EMAIL), json.getString(KEY_UID), json_user.getString(KEY_CREATED_AT));
+                    db.addUser(json_user.getString(KEY_NAME), json_user.getString(KEY_EMAIL), json.getString(KEY_UID), json_user.getString(KEY_CREATED_AT),json_user.getString(KEY_CURSO),json_user.getString(KEY_PARALELO),json_user.getString(KEY_BIO),json_user.getString(KEY_CPRES),json_user.getString(KEY_PIMAGE),json_user.getString(KEY_REPRESENTANTES) );
 
                     // Launch Dashboard Screen
                     Intent dashboard = new Intent(getApplicationContext(), DashboardActivity.class);

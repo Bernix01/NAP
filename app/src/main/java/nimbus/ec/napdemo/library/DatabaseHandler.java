@@ -29,6 +29,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	private static final String KEY_ID = "id";
 	private static final String KEY_NAME = "name";
 	private static final String KEY_EMAIL = "email";
+    private static final String KEY_CURSO = "curso";
+    private static final String KEY_PARALELO = "paralelo";
+    private static final String KEY_BIO = "bio";
+    private static final String KEY_CPRES = "colegio_presedencia";
+    private static final String KEY_PIMAGE = "p_image";
+    private static final String KEY_REPRESENTANTES = "representantes";
 	private static final String KEY_UID = "uid";
 	private static final String KEY_CREATED_AT = "created_at";
 
@@ -43,7 +49,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				+ KEY_ID + " INTEGER PRIMARY KEY," 
 				+ KEY_NAME + " TEXT,"
 				+ KEY_EMAIL + " TEXT UNIQUE,"
-				+ KEY_UID + " TEXT,"
+                + KEY_UID + " TEXT,"
+                + KEY_CURSO + " TEXT,"
+                + KEY_PARALELO + " TEXT,"
+                + KEY_BIO + " TEXT,"
+                + KEY_CPRES + " TEXT,"
+                + KEY_PIMAGE + " TEXT,"
+                + KEY_REPRESENTANTES + " TEXT,"
 				+ KEY_CREATED_AT + " TEXT" + ")";
 		db.execSQL(CREATE_LOGIN_TABLE);
 	}
@@ -61,14 +73,20 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 	/**
 	 * Storing user details in database
 	 * */
-	public void addUser(String name, String email, String uid, String created_at) {
+	public void addUser(String name, String email, String uid, String created_at, String curso, String paralelo, String bio,String cpres, String p_image, String repr) {
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		ContentValues values = new ContentValues();
 		values.put(KEY_NAME, name); // Name
 		values.put(KEY_EMAIL, email); // Email
-		values.put(KEY_UID, uid); // Email
-		values.put(KEY_CREATED_AT, created_at); // Created At
+		values.put(KEY_UID, uid);
+        values.put(KEY_CURSO, curso);
+        values.put(KEY_PARALELO, paralelo);
+        values.put(KEY_BIO, bio);
+        values.put(KEY_CPRES, cpres);
+        values.put(KEY_PIMAGE, p_image);
+        values.put(KEY_REPRESENTANTES, repr);
+        values.put(KEY_CREATED_AT, created_at); // Created At
 
 		// Inserting Row
 		db.insert(TABLE_LOGIN, null, values);
@@ -90,7 +108,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         	user.put("name", cursor.getString(1));
         	user.put("email", cursor.getString(2));
         	user.put("uid", cursor.getString(3));
-        	user.put("created_at", cursor.getString(4));
+            user.put("curso", cursor.getString(4));
+            user.put("paralelo", cursor.getString(5));
+            user.put("bio", cursor.getString(6));
+            user.put("colegio_presedencia", cursor.getString(7));
+            user.put("p_image", cursor.getString(8));
+            user.put("representantes", cursor.getString(9));
+        	user.put("created_at", cursor.getString(10));
         }
         cursor.close();
         db.close();

@@ -74,9 +74,10 @@ public class JSONParser {
 		// try parse the string to a JSON object
 		try {
 			jObj = new JSONObject(json);			
-		} catch (JSONException e) {
+		} catch (JSONException e){
+            String asd = json.substring(3);
             try {
-                jObj = new JSONObject(json.substring(3));
+                jObj = new JSONObject(asd);
             } catch (JSONException e1) {
                 e1.printStackTrace();
             }

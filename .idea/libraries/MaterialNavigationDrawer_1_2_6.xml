@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="MaterialNavigationDrawer-1.2.6">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/it.neokree/MaterialNavigationDrawer/1.2.6/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/it.neokree/MaterialNavigationDrawer/1.2.6/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
