@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:theme="@style/Tema_asd" >
         <activity
-            android:name=".DashboardActivity"
+            android:name=".MainActivity"
             android:label="@string/title_activity_main" >
             <intent-filter android:label="@string/app_name" >
                 <action android:name="android.intent.action.MAIN" />
@@ -38,6 +38,10 @@
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings" >
+        </activity>
+        <activity
+            android:name=".BaseActivity"
+            android:label="@string/title_activity_base" >
         </activity>
     </application>
 

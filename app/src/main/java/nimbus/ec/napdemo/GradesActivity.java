@@ -3,12 +3,17 @@ package nimbus.ec.napdemo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 
 import com.astuetz.PagerSlidingTabStrip;
 
@@ -23,7 +28,7 @@ import nimbus.ec.napdemo.library.DatabaseHandler;
 import nimbus.ec.napdemo.library.UserFunctions;
 
 
-public class GradesActivity extends Drawer_man {
+public class GradesActivity extends Fragment {
     DatabaseHandler dbhan;
     HashMap<String,String> user_details;
     UserFunctions userfnc;
@@ -32,7 +37,7 @@ public class GradesActivity extends Drawer_man {
     private ArrayList<String> TIsTLES;
     private ViewPager pager;
     PagerSlidingTabStrip tabs;
-    private MyPagerAdapter adapter;
+    private MyPagerAdapter frag_grade_adapter;
     String[] terms = new String[]{
             "Q1-P1",
             "Q1-P2",
@@ -43,32 +48,20 @@ public class GradesActivity extends Drawer_man {
             "Q2-EX"
     };
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_grades);
-        dbhan = new DatabaseHandler(getApplicationContext());
+        RelativeLayout main_content = (RelativeLayout) inflater.inflate(R.layout.activity_grades,container,false);
+        dbhan = new DatabaseHandler(this.getActivity().getApplicationContext());
         user_details = dbhan.getUserDetails();
         Log.d("Info","Obetniendo notas..");
         getmygrades();
         Log.d("Info", "Fin de obtención de notas..");
-        tabs= (PagerSlidingTabStrip) findViewById(R.id.tabs);
-        pager = (ViewPager) findViewById(R.id.pager);
+        tabs= (PagerSlidingTabStrip) main_content.findViewById(R.id.tabs);
+        pager = (ViewPager) main_content.findViewById(R.id.pager);
 
-
+        return main_content;
     }
 
-
-
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-    }
 
 
     public class MyPagerAdapter extends FragmentPagerAdapter {
@@ -92,6 +85,7 @@ public class GradesActivity extends Drawer_man {
         @Override
         public Fragment getItem(int position) {
             JSONArray nota_termino = null;
+            Log.d("Position_grade", String.valueOf(position));
             Double promedio = 0.0;
             try{
                 nota_termino = notas.getJSONArray(terms[position]);
@@ -103,6 +97,7 @@ public class GradesActivity extends Drawer_man {
             }catch (JSONException e) {
                 e.printStackTrace();
             }
+            Log.d("frag_pos",String.valueOf(position));
             return TermFragment_grades.newInstance(position,nota_termino, promedio);
         }
 
@@ -138,9 +133,9 @@ public class GradesActivity extends Drawer_man {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                adapter = new MyPagerAdapter(getSupportFragmentManager());
+                frag_grade_adapter = new MyPagerAdapter(getActivity().getSupportFragmentManager());
 
-                pager.setAdapter(adapter);
+                pager.setAdapter(frag_grade_adapter);
 
                 final int pageMargin = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources()
                         .getDisplayMetrics());

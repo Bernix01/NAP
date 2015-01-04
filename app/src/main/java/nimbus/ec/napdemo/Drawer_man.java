@@ -5,9 +5,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.media.audiofx.BassBoost;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -26,15 +23,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import it.neokree.materialnavigationdrawer.MaterialAccount;
-import it.neokree.materialnavigationdrawer.MaterialAccountListener;
-import it.neokree.materialnavigationdrawer.MaterialNavigationDrawer;
 import nimbus.ec.napdemo.library.DatabaseHandler;
 import nimbus.ec.napdemo.library.Rounder;
 import nimbus.ec.napdemo.library.UserFunctions;
@@ -109,7 +102,7 @@ public class Drawer_man extends ActionBarActivity {
                 {
                     case 0:
                         try {
-                            if(getPackageManager().getActivityInfo(getComponentName(),0).name.equals("nimbus.ec.napdemo.DashboardActivity")){
+                            if(getPackageManager().getActivityInfo(getComponentName(),0).name.equals("nimbus.ec.napdemo.MainActivity")){
                                 if(mDrawerLayout.isDrawerOpen(GravityCompat.START)){
                                     mDrawerLayout.closeDrawers();
                                 }
@@ -118,7 +111,7 @@ public class Drawer_man extends ActionBarActivity {
                                 if(mDrawerLayout.isDrawerOpen(GravityCompat.START)){
                                     mDrawerLayout.closeDrawers();
                                 }
-                                Intent go = new Intent(getApplicationContext(),DashboardActivity.class);
+                                Intent go = new Intent(getApplicationContext(),MainActivity.class);
                                 go.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(go);
                                 finish();

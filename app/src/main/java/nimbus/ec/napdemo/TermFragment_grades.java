@@ -2,6 +2,7 @@ package nimbus.ec.napdemo;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,10 @@ public class TermFragment_grades extends Fragment{
     private static Double promedio;
     private int position;
     ArrayList<Object> itemList;
+    ListView grades_container;
+    TextView promedio_txt;
+    ProgressBar loader;
+    Listor_grades adapter;
     MrItem bean;
     public static TermFragment_grades newInstance(int position, JSONArray term, Double promedio) {
         setGrades(term);
@@ -65,9 +70,6 @@ public class TermFragment_grades extends Fragment{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ListView grades_container;
-        TextView promedio_txt;
-        ProgressBar loader;
         LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 
         FrameLayout fl = (FrameLayout) inflater.inflate(R.layout.layout_grades_tabcontent,container,false) ;
@@ -75,30 +77,31 @@ public class TermFragment_grades extends Fragment{
         promedio_txt = (TextView) fl.findViewById(R.id.promedio_term);
         grades_container = (ListView) fl.findViewById(R.id.gradeslv);
         DecimalFormat df = new DecimalFormat("###.##");
-        promedio_txt.setText(String.valueOf(df.format(promedio)));
+        promedio_txt.setText(String.valueOf(df.format(getPromedio())));
         loader = (ProgressBar) fl.findViewById(R.id.progressgrades);
         itemList = new ArrayList<Object>();
-        int l = getGrades().length() ;
-        for (int i = 0; i < l; i++) {
+        for (int i = 0; i <getGrades().length(); i++) {
             JSONObject termino;
             try {
                 termino = getGrades().getJSONObject(i);
+                Log.d("pr",termino.getString("pr"));
                 AddObjectToList(termino.getString("materia"), termino.getString("pr"), termino.getString("ta"), termino.getString("ti"), termino.getString("tg"), termino.getString("l"), termino.getString("pe"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
-        Listor_grades adapter = new Listor_grades(getActivity(),itemList);
+        Log.d("Promedio",String.valueOf(promedio));
+        adapter = new Listor_grades(getActivity(),itemList);
+       // adapter = new Listor_grades(getActivity(),itemList);
         grades_container.setAdapter(adapter);
         grades_container.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                    /*String url = (String) view.getTag();
-                    DetailActivity.launch(HomeActivity.this, view.findViewById(R.id.image), url);*/
+                    String url = (String) view.getTag();
+                   /* DetailActivity.launch(HomeActivity.this, view.findViewById(R.id.image), url);*/
             }
         });
         loader.setVisibility(View.INVISIBLE);
-        grades_container.setVisibility(View.VISIBLE);
 
         return fl;
     }
