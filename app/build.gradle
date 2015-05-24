@@ -3,12 +3,12 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
     }
-    compileSdkVersion 21
-    buildToolsVersion '21.1.2'
+    compileSdkVersion 22
+    buildToolsVersion '22.0.1'
     defaultConfig {
         applicationId "nimbus.ec.napdemo"
         minSdkVersion 16
-        targetSdkVersion 21
+        targetSdkVersion 22
         versionCode 2
         versionName "0.2.0"
     }
@@ -24,10 +24,11 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.github.manuelpeinado.fadingactionbar:fadingactionbar:3.1.2'
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
-    compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'com.android.support:appcompat-v7:+'
     compile 'com.android.support:cardview-v7:21.0.0'
     compile 'com.nhaarman.listviewanimations:lib-core:3.1.0@aar'
     compile 'com.jpardogo.materialtabstrip:library:1.0.6'
     compile 'it.neokree:MaterialNavigationDrawer:1.2.6'
     compile 'com.squareup.picasso:picasso:2.4.0'
+
 }
